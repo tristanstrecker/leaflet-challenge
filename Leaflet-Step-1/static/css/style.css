@@ -40,7 +40,7 @@ html {
 .legend li {
   /* display: block; */
   width: 45px;
-  height: 15px;
+  height: 13px;
   text-align: center;
   display: table-cell;
 }
