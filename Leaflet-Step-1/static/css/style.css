@@ -38,10 +38,11 @@ html {
 }
 
 .legend li {
-  display: block;
+  /* display: block; */
   width: 45px;
   height: 15px;
   text-align: center;
+  display: table-cell;
 }
 
 

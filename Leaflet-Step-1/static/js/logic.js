@@ -111,7 +111,7 @@ function createMap(earthquakes) {
   legend.onAdd = function(myMap) {
     var div = L.DomUtil.create("div", "info legend"),
     depths = [0, 10, 30, 50, 70, 90],
-    labels = ["<h1>Depth</h1>"];
+    labels = ["<h1>Earthquake Depth(km)</h1>"];
 
   // Create legend
   
