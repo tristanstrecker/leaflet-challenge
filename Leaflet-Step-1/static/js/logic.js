@@ -32,18 +32,6 @@ function createFeatures(earthquakeData) {
       "</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
   }
   
-  // function eqDepthColor(depth) {
-  //   if (depth < 10) { return "#A3F600" }
-  //   else if (depth >= 10 && depth < 30) { return "#DBF400" }
-  //   else if (depth >= 30 && depth < 50) { return "#F7DB11" }
-  //   else if (depth >= 50 && depth < 70) { return "#FDB72A" }
-  //   else if (depth >= 70 && depth < 90) { return "#FCA35D" }
-  //   else { return "#FF5F65"}
-  // }
-  
-  // function eqRadius(magnitude) {
-  //     return magnitude * 20000;
-  // }
   // Create a GeoJSON layer containing the features array on the earthquakeData object
   // Run the onEachFeature function once for each piece of data in the array
   // https://leafletjs.com/reference-1.7.1.html#circle
@@ -124,14 +112,16 @@ function createMap(earthquakes) {
   legend.onAdd = function(myMap) {
     var div = L.DomUtil.create("div", "info legend"),
     grades = [0, 10, 30, 50, 70, 90],
-    labels = [];
+    labels = ["<h1>Earthquake Depth</h1>"];
 
   // Create legend
+  
   for (var i = 0; i < grades.length; i++) {
-    div.innerHTML +=
+    labels.push(
         '<i style="background:' + eqDepthColor(grades[i] + 1) + '"></i> ' +
-        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+'));
   }
+  div.innerHTML = labels.join('<br>');
   return div;
   };
   legend.addTo(myMap);
