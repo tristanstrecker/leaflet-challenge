@@ -23,14 +23,13 @@ d3.json(queryUrl, data => {
 });
 
 function createFeatures(earthquakeData) {
-  // Give each feature a popup describing the place and time of the earthquake
+  // Give each feature a popup describing the place, time, magnitude, and depth of the earthquake
   function onEachFeature(feature, layer) {
     layer.bindPopup("<h4>" + feature.properties.place +
       "</h4><hr>" + "<b><u>Time</u>: </b>"+ new Date(feature.properties.time) + "<br>" + "<b><u>Magnitude</u>: </b>" + feature.properties.mag + "<br>" + "<b><u>Depth</u>: </b>" + feature.geometry.coordinates[2]);
   }
   
-  // Create a GeoJSON layer containing the features array on the earthquakeData object
-  // Run the onEachFeature function once for each piece of data in the array
+  // Create a GeoJSON layer containing the features array on the earthquakeData object and run the onEachFeature function once for each piece of data in the array
   // https://leafletjs.com/reference-1.7.1.html#circle
   // https://leafletjs.com/reference-1.7.1.html#layer
   var earthquakes = L.geoJSON(earthquakeData, {
@@ -46,20 +45,19 @@ function createFeatures(earthquakeData) {
     onEachFeature: onEachFeature
   });
 
-  // Sending our earthquakes layer to the createMap function
+  // Send earthquakes layer to the createMap function
   createMap(earthquakes);
 }
 
 function createMap(earthquakes) {
 
-  // Define streetmap and darkmap layers
+  // Define layers
   var satellite = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
   maxZoom: 18,
   id: "satellite-streets-v11",
   accessToken: API_KEY
 });
-
 
   var light = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
@@ -75,33 +73,31 @@ function createMap(earthquakes) {
     accessToken: API_KEY
   });
 
-  // Define a baseMaps object to hold our base layers
+  // Create a baseMaps object to hold base layers
   var baseMaps = {
     "Satellite": satellite,
     "Light": light,
     "Outdoors": outdoors
   };
 
-  // Create overlay object to hold our overlay layer
+  // Create overlay object to hold overlay layer
   var overlayMaps = {
     Earthquakes: earthquakes
   };
 
-  // Create our map, giving it the streetmap and earthquakes layers to display on load
+  // Create the map, giving it the satellite and earthquakes layers to display on load
   var myMap = L.map("mapid", {
     center: [39.8283, -98.5795],
     zoom: 3.5,
     layers: [satellite, earthquakes]
   });
 
-  // Create a layer control
-  // Pass in our baseMaps and overlayMaps
-  // Add the layer control to the map
+  // Create a layer control and pass in baseMaps and overlayMaps then add the layer control to the map
   L.control.layers(baseMaps, overlayMaps, {
     collapsed: false
   }).addTo(myMap);
 
- // Add legend to the map
+ // Add legend to the map - NOTE: further styling is in CSS
  // https://leafletjs.com/examples/choropleth/
   var legend = L.control({position: 'bottomright'});
     
@@ -110,8 +106,7 @@ function createMap(earthquakes) {
     depths = [0, 10, 30, 50, 70, 90],
     labels = ["<h1>Earthquake Depth(km)</h1>"];
 
-  // Create legend
-  
+  // Create legend 
   for (var i = 0; i < depths.length; i++) {
     labels.push(
         '<li style="background:' + eqDepthColor(depths[i] + 1) + '">' +
@@ -121,5 +116,4 @@ function createMap(earthquakes) {
   return div;
   };
   legend.addTo(myMap);
-
 }
