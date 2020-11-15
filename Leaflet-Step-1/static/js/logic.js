@@ -94,7 +94,7 @@ function createMap(earthquakes) {
   // Create our map, giving it the streetmap and earthquakes layers to display on load
   var myMap = L.map("mapid", {
     center: [39.8283, -98.5795],
-    zoom: 4,
+    zoom: 3.5,
     layers: [streetmap, earthquakes]
   });
 
@@ -119,7 +119,7 @@ function createMap(earthquakes) {
   for (var i = 0; i < depths.length; i++) {
     labels.push(
         '<li style="background:' + eqDepthColor(depths[i] + 1) + '">' +
-        depths[i] + (depths[i + 1] ? '&ndash;' + depths[i + 1] + '<br>' : '+') + '</li>');
+        depths[i] + (depths[i + 1] ? '&ndash;' + depths[i + 1]: '+') + '</li>');
   }
   div.innerHTML = labels.join('');
   return div;

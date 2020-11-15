@@ -27,18 +27,18 @@ html {
   /* float: left; */
   margin-right: 8px;
   opacity: 0.7;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .legend ul {
   padding: 0;
   margin: 0;
-  clear: both;
+  /* clear: both; */
   list-style-type: none;
 }
 
 .legend li {
-  display: table;
+  display: block;
   width: 45px;
   height: 15px;
   text-align: center;
