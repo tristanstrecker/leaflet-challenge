@@ -24,9 +24,10 @@ html {
 .legend i {
   width: 18px;
   height: 18px;
-  float: left;
+  /* float: left; */
   margin-right: 8px;
   opacity: 0.7;
+  display: inline-block;
 }
 
 .legend ul {
@@ -37,20 +38,16 @@ html {
 }
 
 .legend li {
-  /* display: inline-block; */
-  width: 30px;
-  height: 22px;
+  display: table;
+  width: 45px;
+  height: 15px;
+  text-align: center;
 }
 
-.legend .min {
-  float: left;
-  padding-bottom: 5px;
-}
 
-.legend .max {
-  float: right;
-}
 
 h1 {
   text-align: center;
+  font-size: 1em;
+  margin-block-start: auto;
 }
