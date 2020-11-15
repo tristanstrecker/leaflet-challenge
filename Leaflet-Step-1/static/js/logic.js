@@ -1,9 +1,7 @@
-// Create an initial map object
-// light-v10
-
-// Store our API endpoint inside queryUrl
+// USGS Past 7 Days - updated every minute from: https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
+// Create function for circle color based on depth
 function eqDepthColor(depth) {
   if (depth < 10) { return "#A3F600" }
   else if (depth >= 10 && depth < 30) { return "#DBF400" }
@@ -13,23 +11,22 @@ function eqDepthColor(depth) {
   else { return "#FF5F65"}
 }
 
+// Create function for circle size based on magnitude
 function eqRadius(magnitude) {
-    return magnitude * 45000;
+    return magnitude * 30000;
 }
 
-// Perform a GET request to the query URL
-d3.json(queryUrl, function(data) {
-  // Once we get a response, send the data.features object to the createFeatures function
+// Use D3 to read the data
+d3.json(queryUrl, data => {
+  // Send the data.features object to the createFeatures function
   createFeatures(data.features);
 });
 
 function createFeatures(earthquakeData) {
-
-  // Define a function we want to run once for each feature in the features array
   // Give each feature a popup describing the place and time of the earthquake
   function onEachFeature(feature, layer) {
-    layer.bindPopup("<h3>" + feature.properties.place +
-      "</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
+    layer.bindPopup("<h4>" + feature.properties.place +
+      "</h4><hr>" + "<b><u>Time</u>: </b>"+ new Date(feature.properties.time) + "<br>" + "<b><u>Magnitude</u>: </b>" + feature.properties.mag + "<br>" + "<b><u>Depth</u>: </b>" + feature.geometry.coordinates[2]);
   }
   
   // Create a GeoJSON layer containing the features array on the earthquakeData object
@@ -108,7 +105,7 @@ function createMap(earthquakes) {
  // https://leafletjs.com/examples/choropleth/
   var legend = L.control({position: 'bottomright'});
     
-  legend.onAdd = function(myMap) {
+  legend.onAdd = function() {
     var div = L.DomUtil.create("div", "info legend"),
     depths = [0, 10, 30, 50, 70, 90],
     labels = ["<h1>Earthquake Depth(km)</h1>"];
