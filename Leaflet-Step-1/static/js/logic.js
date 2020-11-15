@@ -14,7 +14,7 @@ function eqDepthColor(depth) {
 }
 
 function eqRadius(magnitude) {
-    return magnitude * 20000;
+    return magnitude * 45000;
 }
 
 // Perform a GET request to the query URL
@@ -41,8 +41,8 @@ function createFeatures(earthquakeData) {
         return L.circle(latlng, {
             radius: eqRadius(earthquakeData.properties.mag),
             fillColor: eqDepthColor(earthquakeData.geometry.coordinates[2]),
-            fillOpacity: .9,
-            weight: 1,
+            fillOpacity: .8,
+            weight: .3,
             color: "#000"
         });
     },
