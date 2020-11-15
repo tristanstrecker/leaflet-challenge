@@ -17,6 +17,11 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 // Store our API endpoint inside queryUrl
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
+// Determine color based on depth
+function eqDepthColor() {
+  // If statements
+}
+
 // Perform a GET request to the query URL
 d3.json(queryUrl, function(eqData) {
   // Creat GeoJSON layer with retrieved data
