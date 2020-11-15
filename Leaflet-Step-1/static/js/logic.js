@@ -111,15 +111,15 @@ function createMap(earthquakes) {
     
   legend.onAdd = function(myMap) {
     var div = L.DomUtil.create("div", "info legend"),
-    grades = [0, 10, 30, 50, 70, 90],
+    depths = [0, 10, 30, 50, 70, 90],
     labels = ["<h1>Earthquake Depth</h1>"];
 
   // Create legend
   
-  for (var i = 0; i < grades.length; i++) {
+  for (var i = 0; i < depths.length; i++) {
     labels.push(
-        '<i style="background:' + eqDepthColor(grades[i] + 1) + '"></i> ' +
-        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+'));
+        '<i style="background:' + eqDepthColor(depths[i] + 1) + '"></i> ' +
+        depths[i] + (depths[i + 1] ? '&ndash;' + depths[i + 1] + '<br>' : '+'));
   }
   div.innerHTML = labels.join('<br>');
   return div;
