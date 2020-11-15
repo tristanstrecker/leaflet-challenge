@@ -44,11 +44,11 @@ function createFeatures(earthquakeData) {
     },
     onEachFeature: onEachFeature
   });
-
   // Send earthquakes layer to the createMap function
   createMap(earthquakes);
 }
 
+// Create function to render map and layers
 function createMap(earthquakes) {
 
   // Define layers
