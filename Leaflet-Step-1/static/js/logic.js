@@ -1,10 +1,5 @@
 // Create an initial map object
-// Set the longitude, latitude, and the starting zoom level
-// var myMap = L.map("map").setView([39.8283, -98.5795], 4);
-
-
 // light-v10
-
 
 // Store our API endpoint inside queryUrl
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
@@ -23,10 +18,10 @@ function createFeatures(earthquakeData) {
     layer.bindPopup("<h3>" + feature.properties.place +
       "</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
   }
-
+  
   // function eqDepthColor(depth) {
   //   if (depth < 10) { return "#71D628" }
-  //   else if (depth >= 10 && depth < 30) { return "#FFFF33" }
+  //   else if (depth >= 10 && depth < 30) { return "#A5D628" }
   //   else if (depth >= 30 && depth < 50) { return "#FFCC33" }
   //   else if (depth >= 50 && depth < 70) { return "#FF9933" }
   //   else if (depth >= 70 && depth < 90) { return "#FF6633" }
@@ -132,7 +127,7 @@ function createMap(earthquakes) {
 
 function eqDepthColor(depth) {
   if (depth < 10) { return "#71D628" }
-  else if (depth >= 10 && depth < 30) { return "#FFFF33" }
+  else if (depth >= 10 && depth < 30) { return "#A5D628" }
   else if (depth >= 30 && depth < 50) { return "#FFCC33" }
   else if (depth >= 50 && depth < 70) { return "#FF9933" }
   else if (depth >= 70 && depth < 90) { return "#FF6633" }
