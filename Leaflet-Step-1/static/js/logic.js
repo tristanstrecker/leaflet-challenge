@@ -4,6 +4,19 @@
 // Store our API endpoint inside queryUrl
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
+function eqDepthColor(depth) {
+  if (depth < 10) { return "#A3F600" }
+  else if (depth >= 10 && depth < 30) { return "#DBF400" }
+  else if (depth >= 30 && depth < 50) { return "#F7DB11" }
+  else if (depth >= 50 && depth < 70) { return "#FDB72A" }
+  else if (depth >= 70 && depth < 90) { return "#FCA35D" }
+  else { return "#FF5F65"}
+}
+
+function eqRadius(magnitude) {
+    return magnitude * 20000;
+}
+
 // Perform a GET request to the query URL
 d3.json(queryUrl, function(data) {
   // Once we get a response, send the data.features object to the createFeatures function
@@ -20,14 +33,14 @@ function createFeatures(earthquakeData) {
   }
   
   // function eqDepthColor(depth) {
-  //   if (depth < 10) { return "#71D628" }
-  //   else if (depth >= 10 && depth < 30) { return "#A5D628" }
-  //   else if (depth >= 30 && depth < 50) { return "#FFCC33" }
-  //   else if (depth >= 50 && depth < 70) { return "#FF9933" }
-  //   else if (depth >= 70 && depth < 90) { return "#FF6633" }
-  //   else { return "#FF3333"}
+  //   if (depth < 10) { return "#A3F600" }
+  //   else if (depth >= 10 && depth < 30) { return "#DBF400" }
+  //   else if (depth >= 30 && depth < 50) { return "#F7DB11" }
+  //   else if (depth >= 50 && depth < 70) { return "#FDB72A" }
+  //   else if (depth >= 70 && depth < 90) { return "#FCA35D" }
+  //   else { return "#FF5F65"}
   // }
-
+  
   // function eqRadius(magnitude) {
   //     return magnitude * 20000;
   // }
@@ -123,17 +136,4 @@ function createMap(earthquakes) {
   };
   legend.addTo(myMap);
 
-}
-
-function eqDepthColor(depth) {
-  if (depth < 10) { return "#71D628" }
-  else if (depth >= 10 && depth < 30) { return "#A5D628" }
-  else if (depth >= 30 && depth < 50) { return "#FFCC33" }
-  else if (depth >= 50 && depth < 70) { return "#FF9933" }
-  else if (depth >= 70 && depth < 90) { return "#FF6633" }
-  else { return "#FF3333"}
-}
-
-function eqRadius(magnitude) {
-    return magnitude * 20000;
 }
