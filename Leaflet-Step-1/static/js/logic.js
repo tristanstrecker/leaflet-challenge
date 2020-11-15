@@ -24,18 +24,18 @@ function createFeatures(earthquakeData) {
       "</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
   }
 
-  function eqDepthColor(depth) {
-    if (depth < 10) { return "#71D628" }
-    else if (depth >= 10 && depth < 30) { return "#FFFF33" }
-    else if (depth >= 30 && depth < 50) { return "#FFCC33" }
-    else if (depth >= 50 && depth < 70) { return "#FF9933" }
-    else if (depth >= 70 && depth < 90) { return "#FF6633" }
-    else { return "#FF3333"}
-  }
+  // function eqDepthColor(depth) {
+  //   if (depth < 10) { return "#71D628" }
+  //   else if (depth >= 10 && depth < 30) { return "#FFFF33" }
+  //   else if (depth >= 30 && depth < 50) { return "#FFCC33" }
+  //   else if (depth >= 50 && depth < 70) { return "#FF9933" }
+  //   else if (depth >= 70 && depth < 90) { return "#FF6633" }
+  //   else { return "#FF3333"}
+  // }
 
-  function eqRadius(magnitude) {
-      return magnitude * 20000;
-  }
+  // function eqRadius(magnitude) {
+  //     return magnitude * 20000;
+  // }
   // Create a GeoJSON layer containing the features array on the earthquakeData object
   // Run the onEachFeature function once for each piece of data in the array
   // https://leafletjs.com/reference-1.7.1.html#circle
@@ -109,26 +109,36 @@ function createMap(earthquakes) {
     collapsed: false
   }).addTo(myMap);
 
-// // Add legend to the map
-// var legend = L.control({position: 'bottomright'});
-  
-// legend.onAdd = function() {
-//     var div = L.DomUtil.create('div', 'info legend'),
-//         depth = [0, 1, 2, 3, 4, 5],
-//         labels = [];
+ // Add legend to the map
+ // https://leafletjs.com/examples/choropleth/
+  var legend = L.control({position: 'bottomright'});
+    
+  legend.onAdd = function(myMap) {
+    var div = L.DomUtil.create("div", "info legend"),
+    grades = [0, 10, 30, 50, 70, 90],
+    labels = [];
 
-        
-//     for (var i = 0; i < mags.length; i++) {
-//         div.innerHTML +=
-//             '<i style="background:' + eqDepthColor(mags[i] + 1) + '"></i> ' +
-//             mags[i] + (mags[i + 1] ? '&ndash;' + mags[i + 1] + '<br>' : '+');
-//     }
-
-//     return div;
-// };
-
-// legend.addTo(myMap);
+  // Create legend
+  for (var i = 0; i < grades.length; i++) {
+    div.innerHTML +=
+        '<i style="background:' + eqDepthColor(grades[i] + 1) + '"></i> ' +
+        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+  }
+  return div;
+  };
+  legend.addTo(myMap);
 
 }
 
+function eqDepthColor(depth) {
+  if (depth < 10) { return "#71D628" }
+  else if (depth >= 10 && depth < 30) { return "#FFFF33" }
+  else if (depth >= 30 && depth < 50) { return "#FFCC33" }
+  else if (depth >= 50 && depth < 70) { return "#FF9933" }
+  else if (depth >= 70 && depth < 90) { return "#FF6633" }
+  else { return "#FF3333"}
+}
 
+function eqRadius(magnitude) {
+    return magnitude * 20000;
+}
