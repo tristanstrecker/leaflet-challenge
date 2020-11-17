@@ -1,6 +1,9 @@
 # Leaflet Homework - Visualizing Data with Leaflet
 
-Map can be viewed <a href="https://adrianstrecker.github.io/leaflet-challenge/">here</a>
+This map shows earthquakes recorded by USGS in the last seven days and can be viewed <a href="https://adrianstrecker.github.io/leaflet-challenge/">here</a>. Here is example of information provided by the popup when a circle is clicked:
+
+![Popup](Images/popup.png)
+
 
 ## Background
 
