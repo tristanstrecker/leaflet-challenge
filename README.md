@@ -1,5 +1,7 @@
 # Leaflet Homework - Visualizing Data with Leaflet
 
+Map can be viewed <a href="https://adrianstrecker.github.io/leaflet-challenge/">here</a>
+
 ## Background
 
 ![1-Logo](Images/1-Logo.png)
