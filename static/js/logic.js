@@ -47,7 +47,18 @@ function createFeatures(earthquakeData) {
   // Send earthquakes layer to the createMap function
   createMap(earthquakes);
 }
-
+  // Create Tectonic Plate overlay/layer group
+  // https://leafletjs.com/reference-1.7.1.html#geojson
+  var plates = new L.LayerGroup();
+  // Read geoJSON (file kindly made available by: https://github.com/fraxen/tectonicplates)
+  d3.json('static/PB2002_plates.json', faultData => {
+    L.geoJSON(faultData, {
+      // Style the appearance of the fault lines
+      style: function() {
+        return {color: "#EE8C1B", fillOpacity: 0, weight: 2}
+      }
+    }).addTo(plates)
+  })
 // Create function to render map and layers
 function createMap(earthquakes) {
 
@@ -82,14 +93,15 @@ function createMap(earthquakes) {
 
   // Create overlay object to hold overlay layer
   var overlayMaps = {
-    Earthquakes: earthquakes
+    Earthquakes: earthquakes,
+    'Tectonic Plates': plates
   };
 
   // Create the map, giving it the satellite and earthquakes layers to display on load
   var myMap = L.map("mapid", {
     center: [39.8283, -98.5795],
     zoom: 3.5,
-    layers: [satellite, earthquakes]
+    layers: [satellite, earthquakes, plates]
   });
 
   // Create a layer control and pass in baseMaps and overlayMaps then add the layer control to the map
