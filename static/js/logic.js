@@ -101,7 +101,7 @@ function createMap(earthquakes) {
   var myMap = L.map("mapid", {
     center: [39.8283, -98.5795],
     zoom: 3.5,
-    layers: [satellite, earthquakes, plates]
+    layers: [satellite, plates, earthquakes]
   });
 
   // Create a layer control and pass in baseMaps and overlayMaps then add the layer control to the map
