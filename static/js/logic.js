@@ -97,7 +97,7 @@ function createMap(earthquakes) {
     'Tectonic Plates': plates
   };
 
-  // Create the map, giving it the satellite and earthquakes layers to display on load
+  // Create the map, giving it the satellite, plate, and earthquakes layers to display on load
   var myMap = L.map("mapid", {
     center: [39.8283, -98.5795],
     zoom: 3.5,
