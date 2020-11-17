@@ -56,20 +56,21 @@ Your first task is to visualize an earthquake data set.
    * Your visualization should look something like the map above.
 
 - - -
+### Level 2: More Data (Optional)
 
-### Assessment
+![5-Advanced](Images/5-Advanced.png)
 
-Your final product will be assessed on the following metrics:
+The USGS wants you to plot a second data set on your map to illustrate the relationship between tectonic plates and seismic activity. You will need to pull in a second data set and visualize it along side your original set of data. Data on tectonic plates can be found at <https://github.com/fraxen/tectonicplates>.
 
-* Completion of assigned tasks
+In this step we are going to..
 
-* Visual appearance
+* Plot a second data set on our map.
 
-* Professionalism
+* Add a number of base maps to choose from as well as separate out our two different data sets into overlays that can be turned on and off independently.
 
-* Ensure your repository has regular commits (i.e. 20+ commits) and a thorough README.md file
+* Add layer controls to our map.
 
-**Good luck!**
+- - -
 
 ### Copyright
 
