@@ -94,8 +94,8 @@ function createMap(earthquakes) {
 
   // Create overlay object to hold overlay layers
   var overlayMaps = {
-    'Tectonic Plates': plates,
     Earthquakes: earthquakes,
+    'Tectonic Plates': plates,
   };
 
   // Create the map, giving it the satellite, plate, and earthquakes layers to display on load
