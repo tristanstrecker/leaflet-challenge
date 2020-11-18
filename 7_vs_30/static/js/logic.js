@@ -69,15 +69,13 @@ function createFeatures(earthquakeData) {
   });
   
   function createFeatures(data30) {
-    // Give each feature a popup describing the place, time, magnitude, and depth of the earthquake
+    // Give each feature a popup describing the place, time, type, magnitude, and depth of the earthquake
     function onEachFeature30(feature, layer) {
       layer.bindPopup("<h4>" + feature.properties.place +
         "</h4><hr>" + "<b><u>Time</u>: </b>"+ new Date(feature.properties.time) + "<br>" + "<b><u>Type</u>: </b>" + feature.properties.type + "<br>" + "<b><u>Magnitude</u>: </b>" + feature.properties.mag + "<br>" + "<b><u>Depth</u>: </b>" + feature.geometry.coordinates[2]);
     }
     
     // Create a GeoJSON layer containing the features array on the earthquakeData object and run the onEachFeature function once for each piece of data in the array
-    // https://leafletjs.com/reference-1.7.1.html#circle
-    // https://leafletjs.com/reference-1.7.1.html#layer
     var earthquakes30 = L.geoJSON(data30, {
       pointToLayer: function (data30, latlng) {
           return L.circle(latlng, {
@@ -90,7 +88,7 @@ function createFeatures(earthquakeData) {
       },
       onEachFeature: onEachFeature30
     }).addTo(eq30);
-    // Send earthquakes layer to the createMap function
+    // Send earthquakes30 layer to the createMap function
     createMap(earthquakes30);
   }
 
