@@ -2,11 +2,11 @@
 
 This map shows earthquakes recorded by USGS in the last seven days and can be viewed <a href="https://adrianstrecker.github.io/leaflet-challenge/">here</a>. Here is example of information provided by the popup when a circle is clicked:
 
-<img src="https://raw.githubusercontent.com/adrianstrecker/leaflet-challenge/main/Images/popup.png" width=700>
+![Popup](Images/popup.png)
 
 An additional map was created to compare the past 7 days vs 30 days. This map can be accessed <a href="https://adrianstrecker.github.io/leaflet-challenge/7_vs_30/">here</a>
 
-<img src="https://raw.githubusercontent.com/adrianstrecker/leaflet-challenge/main/Images/popup2.png" width=700>
+![Popup-Alternative](Images/popup2.png)
 
 ## Background
 
