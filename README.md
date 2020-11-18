@@ -6,6 +6,8 @@ This map shows earthquakes recorded by USGS in the last seven days and can be vi
 
 An additional map was created to compare the past 7 days vs 30 days. This map can be accessed <a href="https://adrianstrecker.github.io/leaflet-challenge/7_vs_30/">here</a>
 
+![Popup-Alternative](Images/popup2.png)
+
 ## Background
 
 ![1-Logo](Images/1-Logo.png)
