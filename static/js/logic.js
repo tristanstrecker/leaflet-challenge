@@ -13,7 +13,7 @@ function eqDepthColor(depth) {
 
 // Create function for circle size based on magnitude
 function eqRadius(magnitude) {
-    return magnitude * 6000;
+    return magnitude * 500;
 }
 
 // Use D3 to read the data
@@ -101,7 +101,7 @@ function createMap(earthquakes) {
   // Create the map, giving it the satellite, plate, and earthquakes layers to display on load
   var myMap = L.map("mapid", {
     center: [39.8283, -98.5795],
-    zoom: 5,
+    zoom: 7,
     layers: [satellite, plates, earthquakes]
   });
 
